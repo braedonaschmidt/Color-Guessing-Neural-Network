@@ -2,7 +2,7 @@ import numpy as np
 import random as rand
 
 class NeuralNetwork:
-    lr = 0.1
+    lr = 0.2
 
     def randWeights(self, weights):
         for i in range(weights.shape[0]):
