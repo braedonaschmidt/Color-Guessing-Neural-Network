@@ -32,11 +32,11 @@ def loadCSV():
                 rowNum += 1
             elif rowNum == 1:
                 rowNum += 1
-                inputs = np.array([[int(row[0]), int(row[1]), int(row[2])]])
-                labels = np.array([int(row[3])])
+                inputs = np.array([[float(row[0]), float(row[1]), float(row[2])]])
+                labels = np.array([float(row[3])])
             else:
-                inputs = np.append(inputs, [[int(row[0]), int(row[1]), int(row[2])]], axis=0)
-                labels = np.append(labels, [int(row[3])])
+                inputs = np.append(inputs, [[float(row[0]), float(row[1]), float(row[2])]], axis=0)
+                labels = np.append(labels, [float(row[3])])
         
         return inputs, labels
     
@@ -57,7 +57,6 @@ if __name__ == "__main__":
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     bgColor = randColor()
     inputs, labels = loadCSV()
-    print(inputs, labels)
 
     window = Tk()
     window.title("neural_network.py")
@@ -75,7 +74,6 @@ if __name__ == "__main__":
 
     def updateConfidence():
         output = model.predict(getCurrInputs()) # nn.feedForward(getCurrInputs())
-        print(output)
         guess_w.configure(text=output[0][1])
         guess_b.configure(text=output[0][0])
 
